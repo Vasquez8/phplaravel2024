@@ -28,5 +28,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'alumno@alumno.com',
             'password' => Hash::make('alumno'),
         ]);
+
+        // DB::table('asistencias')->insert([
+        //     'grupo_id' => $request->grupo_id,
+        //     'estudiante_id' => $request->estudiante_id,
+        //     'fecha' => $request->fecha,
+        //     'hora_entrada' => $request->hora_entrada,
+        // ]);
     }
 }

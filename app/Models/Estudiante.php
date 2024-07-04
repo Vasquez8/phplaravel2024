@@ -21,7 +21,12 @@ class Estudiante extends Authenticatable
         'password'
     ];
     
-    // protected $hidden =[
-    //     'password',
-    // ];
+    protected $hidden =[
+        'password',
+    ];
+
+    public function grupo()
+    {
+        return $this->belongsTo(Grupo::class);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
+use App\Models\Asistencia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -131,5 +132,37 @@ class EstudianteController extends Controller
     public function showLoginForm()
     {
         return view('estudiantes.login');
+    }
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
+
+        $estudiante = Estudiante::where('email', $request->email)->first();
+
+        if ($estudiante && Hash::check($request->password, $estudiante->password)) {
+            Auth::guard('web')->login($estudiante);
+
+            // Obtener el grupo del estudiante
+            $grupo = $estudiante->id;
+
+            if($grupo){
+                // Registrar la asistencia
+                Asistencia::create([
+                    'grupo_id' => $grupo,
+                    'estudiante_id' => $estudiante->id,
+                    'fecha' => now()->format('Y-m-d'),
+                    'hora_entrada' => now()->format('H:i:s'),
+                ]);
+
+                return redirect()->route('estudiantes.login')->with('success', 'Asistencia registrada correctamente.');
+        }else {
+            return redirect()->back()->withErrors(['NoGroup' => 'El estudiante no tiene un grupo asignado.']);
+        }
+    }
+        return redirect()->back()->withErrors(['InvalidCredentials' => 'Las credenciales proporcionadas no coinciden.']);
     }
 }

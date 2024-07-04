@@ -32,7 +32,7 @@ function desaparecerAlerta() {
     if (alerta) {
         setTimeout(function () {
             alerta.remove();
-        }, 3000);
+        }, 5000);
     }
 }
 
