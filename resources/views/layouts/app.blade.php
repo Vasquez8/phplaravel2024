@@ -34,9 +34,14 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         @if (auth()->check())
                         <li class="dropdown-header">{{ auth()->user()->email }}</li>
-                        <li><a class="dropdown-item" href="{{ route('docentes.logout') }}">Cerrar sesión</a></li>
+                        <li>
+                            <form action="{{ route('docentes.logout') }}" method="POST" style="display: inline;">
+                                @csrf
+                                <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                            </form>
+                        </li>
                         @else
-                        <li><a class="dropdown-item" href="{{ route('docentes.showLoginForm') }}">iniciar sesión como docentes</a></li>
+                        <li><a class="dropdown-item" href="{{ route('docentes.showLoginForm') }}">Iniciar sesión como docente</a></li>
                         <li><a class="dropdown-item" href="{{ route('estudiantes.showLoginForm') }}">Asistencia estudiante</a></li>
                         @endif
                     </ul>
@@ -49,7 +54,6 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <!-- @if (auth()->check()) -->
                             <div class="sb-sidenav-menu-heading">Mantenimiento</div>
                             <a class="nav-link" href="{{ route('docentes.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -75,7 +79,6 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Asistencias
                             </a>
-                            <!-- @endif -->
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">

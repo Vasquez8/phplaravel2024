@@ -16,4 +16,4 @@ Route::group(['prefix' => 'docentes' , 'middleware' => 'auth_docentes'], functio
 
 Route::get('docentes/login', [DocenteController::class, 'showLoginForm'])->name('docentes.showLoginForm');
 Route::post('docentes/login', [DocenteController::class, 'login'])->name('docentes.login');
-Route::get('docentes/logout', [DocenteController::class, 'logout'])->name('docentes.logout');
+Route::post('docentes/logout', [DocenteController::class, 'logout'])->name('docentes.logout');

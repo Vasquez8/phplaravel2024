@@ -2,7 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstudianteGrupoController;
 
-Route::group(['prefix' => 'estudiantes_grupos'], function () {
+Route::group(['prefix' => 'estudiantes_grupos', 'middleware' => 'auth_docentes'], function () {
     Route::get('/', [EstudianteGrupoController::class, 'index'])->name('estudiantes_grupos.index');
     Route::get('/show/{id}', [EstudianteGrupoController::class, 'show'])->name('estudiantes_grupos.show');
     Route::get('/create', [EstudianteGrupoController::class, 'create'])->name('estudiantes_grupos.create');

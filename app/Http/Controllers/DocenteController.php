@@ -123,8 +123,9 @@ class DocenteController extends Controller
     {
         return view('docentes.login');
     }
+    
     public function login(Request $request)
-{
+    {
     $credentials = $request->only('email', 'password');
 
     if (Auth::guard('docente')->attempt($credentials)) {
@@ -134,7 +135,7 @@ class DocenteController extends Controller
     return redirect()->back()->withErrors([
         'InvalidCredentials' => 'Las credenciales proporcionadas no coinciden',
     ]);
-}
+    }
 
     public function logout()
     {
