@@ -116,7 +116,7 @@ class DocenteController extends Controller
         }
         $docente->delete();
 
-        return redirect()->route('docentes.index')->with('success', 'Docente eliminado correctaente');
+        return redirect()->route('docentes.index')->with('success', 'Docente eliminado correctamente');
     }
 
     public function showLoginForm()

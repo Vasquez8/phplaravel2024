@@ -5,7 +5,9 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">Lista de Asistencias</div>
+                    <div class="card-header text-center">
+                        <h1>Lista de Asistencias</h1>
+                    </div>
 
                     <div class="card-body">
                         @if (session('success'))
@@ -46,7 +48,6 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
                                     <th scope="col">Grupo</th>
                                     <th scope="col">Estudiante</th>
                                     <th scope="col">Fecha</th>
@@ -57,13 +58,12 @@
                             <tbody>
                                 @foreach ($asistencias as $asistencia)
                                     <tr>
-                                        <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $asistencia->grupo ? $asistencia->grupo->nombre : 'Grupo no encontrado' }}</td>
                                         <td>{{ $asistencia->estudiante ? $asistencia->estudiante->nombre : 'Estudiante no encontrado' }}</td>
                                         <td>{{ $asistencia->fecha }}</td>
                                         <td>{{ $asistencia->hora_entrada }}</td>
                                         <td>
-                                        <a href="{{ route('asistencias.show', $asistencia->id) }}" class="btn btn-info me-1">Ver</a>                                        </td>
+                                        <a href="{{ route('asistencias.show', $asistencia->id) }}" class="btn btn-info m-2">Ver</a>                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

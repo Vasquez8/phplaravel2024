@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Ver estudiante</h1>
+<div class="card-header text-center" style="max-width: 600px; margin: 0 auto;">
+    <h1>Ver Estudiante</h1>
+</div>
     <div class="row">
         <div class="col-md-4">
             <label for="nombre" class="form-label">Nombre</label>
@@ -22,7 +24,7 @@
         </div>
     <br>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 d-flex justify-content-center">
             <a href="{{ route('estudiantes.index') }}" class="btn btn-primary">Retornar</a>
         </div>
     </div>

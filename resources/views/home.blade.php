@@ -1,20 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mt-4">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Bienvenido a Mi Web</div>
+                <div class="card-header bg-primary text-white text-center">Bienvenido a Mi Web</div>
 
                 <div class="card-body">
                     @auth
                     <div class="alert alert-success" role="alert">
-                        <p>{{ auth()->user()->email }}</p>
+                        <p class="mb-0">¡Hola, {{ auth()->user()->email }}! Bienvenido de nuevo a nuestra plataforma.</p>
                     </div>
                     @else
-                    <div class="alert alert-danger" role="alert">
-                        <p>No has ingresado aún.</p>
+                    <div class="text-center">
+                        <p class="lead">Bienvenido a nuestra plataforma. Por favor, inicia sesión para acceder a nuestros servicios.</p>
                     </div>
                     @endauth
                 </div>
